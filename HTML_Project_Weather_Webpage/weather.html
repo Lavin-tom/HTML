@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>wheather</title>
+	<style type="text/css">
+		/*style for different div*/
+		#body
+		{
+			background-color:black;
+
+		}
+		#main
+		{
+			position:absolute;
+			background: linear-gradient(to bottom,white,#f6f6f6);
+			width:25%;   
+			height:55%;
+			top:25%;
+			left:55%;
+			border-radius:20px; 
+			font-family: oswald, arial, sans-serif; 
+		}
+		#main2
+		{
+			position:absolute;
+			width:20%;   
+			height:50%;
+			top:50%;
+			left:58%;
+			border-color:black; 
+			font-family: oswald, arial, sans-serif; 
+		}
+	</style>
+	<!-- style ends -->
+</head>
+<!-- body starts -->
+	<body>
+		<!-- jquery link -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<script src="jquery-1.11.0.min.js"></script>
+		
+		<div id=body>
+			<img style="width:1350px;height:675px;" src="ClearWelllitEmu-size_restricted.gif">
+		</div>
+		<!-- text field div -->
+		<div id="main">
+			<center><p style="font-size: 25px;font-family:sans-serif;color:#0099ff" ><b>CLI</b> mate<p></center>
+
+			<input style="position:absolute;left:20%;top:20%;width:48%;height:8%;color:#0099ff " type="text" placeholder="  Enter city name"id="text">
+			<button style="position:absolute;left:70%;top:20%;width:17%;height:9%;color:#0099ff" id="submit" >search</button>
+			
+			<p style="position:absolute;left:20%;top:30%;width:50%;height:9%;font-size:11px " >For better result type <b>Exact  spelling</b></p>
+		</div>
+		<!-- result field div -->
+		<div id="main2">
+
+  			<center><h1 style="font-family: oswald, arial, sans-serif;color:#0099ff" class="name" id="name"></h1>
+  			<p style="font-family: oswald, arial, sans-serif;" class="temp"></p>
+  			<!-- <img id="pic"style="width:50px;height:50px"src="temperature_453478.png"> -->
+  			<p style="font-family: oswald, arial, sans-serif;" class="clouds"></p>
+  			<p style="font-family: oswald, arial, sans-serif;" class="desc"></p></center><br><br><br><br><br><hr>
+  			<marquee>Weather in <b>Thiruvananthapuram,Kerala</b> Wednesday Partly Cloudy 31°  <b>Wind</b> : NW 14 km/h  <b>Humidity</b> : 73% ,<b>Dew Point</b> :25°,<b> Pressure</b> 1,007.5 mb ,<b> Visibility</b> 8.1 km </marquee>
+ 
+		</div>
+		<!-- script starts -->
+		<script type="text/javascript">
+			var input = document.querySelector('#text');
+			var main = document.querySelector('#name');
+			var temp = document.querySelector('.temp');
+			var desc = document.querySelector('.desc');
+			var clouds = document.querySelector('.clouds');
+			var button= document.querySelector('#submit');
+			button.addEventListener('click', function(name){
+			fetch('https://api.openweathermap.org/data/2.5/weather?q='+input.value+'&appid=50a7aa80fa492fa92e874d23ad061374')
+			.then(response => response.json())
+			.then(data => {
+			var tempValue = data['main']['temp'];
+			var nameValue = data['name'];
+			var descValue = data['weather'][0]['description'];
+			main.innerHTML = nameValue;
+			var p= Math.trunc (tempValue-273);
+			desc.innerHTML = "Description - "+descValue;
+			temp.innerHTML = "Temperature: "+p+"&#8451";	
+			input.value ="";
+			})
+			.catch(err => alert("Wrong city name! Check the Spelling of City"));
+			})
+			</script>
+<!-- script ends -->
+	</body>
+</html>
