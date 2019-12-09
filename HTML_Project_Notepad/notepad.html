@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>notepad</title>
+			<style type="text/css">
+			.text
+			{
+			position: absolute;
+			/*background-color: black;*/
+			width:55%;
+			height:10%;
+			left:35%;
+			top:10%;
+			}
+			li:hover
+			{
+				text-decoration: line-through;  
+			}
+			
+		</style>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<script>
+			$(document).ready(function(){
+  			$("#text").dblclick(function(){
+  				var s=$("#text").val();
+  				$("#deslist").append("<li>"+s+"</li>");
+  				$("#text").val("");
+
+  					$("li").dblclick(function()
+						{
+					$(this).hide();
+						});
+  						});
+
+  			});
+  			
+  			</script>
+	</head>
+		<body>
+ 			<div class="text">
+ 				<input style="border-radius:10px;width:auto;height:35%;border:none;font-size:30px;" type="text" id="text"placeholder="whats need to be done?">
+ 			</div>
+ 			<div style="position:absolute;left:30%;top:15%;font-size:30px;"id="text">
+ 				<ul id="deslist">
+			
+				</ul>
+ 			</div>
+		</body>
+</html>
