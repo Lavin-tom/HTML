@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>editor</title>
+	<style type="text/css">
+		.full
+		{
+			background-color:#00ff80; 
+			position: absolute;
+			width:100%;
+			top:0%;
+			height:65%;
+			left:0%;
+
+		}
+		.first
+		{
+			
+			position: absolute;
+			width:32%;
+			height:100%;
+			left:1%;
+			top:10%;
+		}
+		.second
+		{
+			
+			position: absolute;
+			width:33%;
+			height:100%;
+			left:34%;
+			top:10%;
+		}
+		.third
+		{
+			
+			position: absolute;
+			width:31%;
+			height:100%;
+			left:68%;
+			top:10%;
+		}
+		.line
+		{
+			
+			position:absolute;
+			width:100%; 
+			top:73%;
+			height:1%;
+
+		}
+		#last
+		{
+			background-color: #ffe6e6;
+			position:absolute;
+			width:100%; 
+			top:75%;
+			height:45%;
+
+		}
+	</style>
+</head>
+<body>
+	<div class="full">
+		<center><h3>Web page editor</h3></center>
+		<div class="first">
+			<textarea type="text" style="position:absolute;width:100%;height:100%;border-color:grey;"placeholder=" html" id="text"></textarea>
+		</div>
+		<div class="second">
+			<textarea type="text" style="position:absolute;width:100%;height:100%;border-color:grey;"placeholder=" css" id="css" ></textarea>
+		</div>
+			<div class="third">
+				<textarea type="text" style="position:absolute;width:100%;height:100%;border-color:grey;"placeholder=" java script" id="js" ></textarea>
+			</div>
+		
+	</div>
+	<div class="line"><hr></div>
+		<div id="code"></div>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script>
+    		 $(document).ready(function(){
+        		 $('#text').keyup(function(){
+             $('#last').html($(this).val());
+        				 });
+    				});	
+
+   </script>
+    <div id="last"></div>
+    	
+</body>
+</html>
