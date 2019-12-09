@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>ddddfd</title>
+	<!-- nav panel -->
+	<nav>
+			<a  href="message.html"><img style="width:35px;height:35px;position:absolute;left:5%;" src="App-Messages-icon.png"></a>
+     		<a href="music.html"><img style="width:30px;height:30px;position:absolute;left:40%;" src="guitar-music-instrument-round-blue-512.png"></a>
+    		<a href="time.html"class="current"><img style="width:30px;height:30px;position:absolute;left:77%;" src="443_-_Clock-512.png"></a>
+    		</nav>
+</head>
+<!-- div and content -->
+<section id="co">
+		<div id="main">
+			<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<script src="jquery-1.11.0.min.js"></script>
+			<body onload="startTime()">
+				<div style="position:absolute;left:70%;font-size:18px;top:10%;color:#0099ff	 " id="txt"></div>
+			<h1 style="font-size: 20px;position: absolute;top:10%;left:10%;font-family:sans-serif;color:#0099ff">Stop watch</h1>
+			<h1 style="font-size: 25px;position: absolute;top:30%;left:30%;"id="display"><time>00:00:00</time></h1>
+			<div class="buttons">
+			<button style="font-size: 15px;position: absolute;top:60%;left:20%;background-color:green;border:none;color:white" id="startStop" onclick="startStop();">start</button>
+			<!-- <button style="font-size: 15px;position: absolute;top:60%;left:40%;background-color:red;border:none"id="reset" onclick="reset() ">stop</button> -->
+			<button style="font-size: 15px;position: absolute;top:60%;left:60%;background-color:yellow;border:none;" id="reset" onclick="reset();">clear</button>
+			</div>
+
+			<h1 style="font-size: 15px;position: absolute;top:70%;left:38%;font-family:sans-serif;color:#0099ff">Weather</h1>
+			<marquee style="position:absolute;top:85%; ">Weather in <b>Thiruvananthapuram,Kerala</b> Thursday Partly Cloudy 31°  <b>Wind</b> : NW 14 km/h  <b>Humidity</b> : 73% ,<b>Dew Point</b> :25°,<b> Pressure</b> 1,007.5 mb ,<b> Visibility</b> 8.1 km </marquee>
+		</div>
+	</section>
+	<!-- java script start -->
+	
+	<script type="text/javascript">
+	let seconds = 0;
+	let minutes = 0;
+	let hours = 0;
+
+	//Define vars to hold "display" value
+	let displaySeconds = 0;
+	let displayMinutes = 0;
+	let displayHours = 0;
+
+	//Define var to hold setInterval() function
+	let interval = null;
+
+	//Define var to hold stopwatch status
+	let status = "stopped";
+
+	//Stopwatch function (logic to determine when to increment next value, etc.)
+	function stopWatch(){
+
+    seconds++;
+
+    //Logic to determine when to increment next value
+    if(seconds / 60 === 1){
+        seconds = 0;
+        minutes++;
+
+        if(minutes / 60 === 1){
+            minutes = 0;
+            hours++;
+        }
+
+    }
+
+    //If seconds/minutes/hours are only one digit, add a leading 0 to the value
+    if(seconds < 10){
+        displaySeconds = "0" + seconds.toString();
+    }
+    else{
+        displaySeconds = seconds;
+    }
+
+    if(minutes < 10){
+        displayMinutes = "0" + minutes.toString();
+    }
+    else{
+        displayMinutes = minutes;
+    }
+
+    if(hours < 10){
+        displayHours = "0" + hours.toString();
+    }
+    else{
+        displayHours = hours;
+    }
+
+    //Display updated time values to user
+    document.getElementById("display").innerHTML = displayHours + ":" + displayMinutes + ":" + displaySeconds;
+
+	}
+
+	
+
+	function startStop(){
+
+    if(status === "stopped"){
+
+        //Start the stopwatch (by calling the setInterval() function)
+        interval = window.setInterval(stopWatch, 1000);
+        document.getElementById("startStop").innerHTML = "Stop";
+        status = "started";
+
+    }
+    else{
+
+        window.clearInterval(interval);
+        document.getElementById("startStop").innerHTML = "Start";
+        status = "stopped";
+
+    }
+
+}
+
+	//Function to reset the stopwatch
+	function reset(){
+
+    window.clearInterval(interval);
+    seconds = 0;
+    minutes = 0;
+    hours = 0;
+    document.getElementById("display").innerHTML = "00:00:00";
+    document.getElementById("startStop").innerHTML = "Start";
+
+}
+
+</script>
+
+	</body>
+	</html>
