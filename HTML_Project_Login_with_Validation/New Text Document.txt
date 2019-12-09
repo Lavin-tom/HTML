@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>login page</title>
+	<style type="text/css">
+		.body
+		{
+			position: absolute;
+			width:100%;
+			height:100%;
+			top:0%;
+			left:0%;
+		}
+		.div1
+		{
+			position: absolute;
+			background-color:grey;
+			color:white;
+			width:30%;
+			height:auto;
+			top:20%;
+			left:15%; 
+			border-radius:25px; 
+		}
+		#div2
+		{
+			
+			position: absolute;
+			width:40%;
+			height:4%;
+			left:35%;
+			top:19%;
+			color:white;
+			font-size:13px; 
+		}
+		#div3
+		{
+			
+			position: absolute;
+			width:40%;
+			height:4%;
+			left:35%;
+			top:27%;
+			color:white;
+			font-size:13px; 
+		}
+		#div4
+		{
+			
+			position: absolute;
+			width:40%;
+			height:4%;
+			left:35%;
+			top:46%;
+			color:white;
+			font-size:13px; 
+		}
+		#tick1
+		{
+			
+			position: absolute;
+			width:5%;
+			height:4%;
+			left:74%;
+			top:32%;
+		}
+		#tick2
+		{
+			
+			position: absolute;
+			width:5%;
+			height:4%;
+			left:82%;
+			top:39%;
+		}
+		#bday1
+		{
+			position: absolute;
+			
+			width:45%;
+			height:10%;
+			left:40%;
+			top:60%;
+			color:white;
+			font-size:13px; 
+		}
+		#count
+		{
+			position: absolute;
+			
+			width:6%;
+			height:4%;
+			left:89%;
+			top:67%;
+			color:white;
+			font-size:13px; 
+		}
+		button
+		{
+			color:white;
+			background-color: black;
+			border-color:none;
+			border:none;
+			border-radius:10px;
+			width:30%;
+			height:40%;  
+		}
+		button:hover
+		{
+			background-color:red; 
+		}
+	</style>
+</head>
+	<body>
+		<div class="body">
+			<img style="width:100%;height:100%; "	src="https://cdn.pixabay.com/photo/2016/03/26/13/09/notebook-1280538_960_720.jpg">
+		</div>
+		<div class="div1"><br>	
+			<center><h3>LOGIN</h3>
+				
+		<p>Name: <input type="text" placeholder="Enter your name" id="name" required=""></p>
+		<div id= "div2">
+		</div>
+		<p>Email: <input type="text" placeholder="you@example.com" id="email" required=""></p>
+		<div id = "div3">
+		</div>
+		<p>Password: <input type="password" id="password"></p>
+		<div id="tick1">
+		</div>
+		<p>Confirm Password: <input type="password" id="cpassword"></p>
+		<div id = "div4">
+		</div>
+		<div id="tick2">
+		</div>
+		<h3>Profile</h3>
+		<p>Birthday: <input type="date" id="bday"></p><br>
+		<div id="bday1">
+		</div>
+		<p>Short Bio (Max 140 characters): <textarea type="text" id="text" minlength="0" maxlength="140"></textarea></p>
+		<div id="count">
+		</div>
+		<br>
+		<a href="#"><button>Register</button><p id="nl"></p></a>
+		<br><br>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$("#name").blur(function(){
+				 var n=document.getElementById("name").value;
+ 				 var nl = n.length;
+ 				 if(nl<5)
+  					document.getElementById("div2").innerHTML = "<img src=\"warning-icon-24.png\" width=\"18px\" height=\"18px\">"+"five letters needed";
+  				// document.getElementById("div2").innerHTML = "required";
+  				else
+  				{
+  					document.getElementById("div2").innerHTML="";
+  				}
+			 		});
+ 				 });
+			</script>
+			<script type="text/javascript">
+			$(document).ready(function(){
+				$("#email").blur(function(){
+				 var e=document.getElementById("email").value;
+ 				  // var em = e.includes("@"".");
+ 				 if(email.value.includes("@","."))
+ 				 {
+ 				 	document.getElementById("div3").innerHTML="";
+ 				 }
+ 				 else
+ 				 {
+  					document.getElementById("div3").innerHTML = "<img src=\"warning-icon-24.png\" width=\"18px\" height=\"18px\">"+"Type valid email id"
+  				}
+			 		});
+ 				 });	
+ 				</script>
+ 			<script type="text/javascript">
+			$(document).ready(function(){
+				
+				 var p=document.getElementById("password").value;
+				 $("#cpassword").blur(function(){
+				 var cp=document.getElementById("cpassword").value;
+				 var pw=document.getElementById("password").value;
+ 				 var pwl = pw.length;
+ 				  
+ 				 if((password.value!=cpassword.value)||(pwl<8))
+ 				 {
+  					// document.getElementById("div4").innerHTML = "<img src=\"warning-icon-24.png\" width=\"18px\" height=\"18px\">"+"Password mismatching"
+  					document.getElementById("tick1").innerHTML="<img src=\"download.png\" width=\"15px\" height=\"15px\">";
+  					document.getElementById("tick2").innerHTML="<img src=\"download.png\" width=\"15px\" height=\"15px\">";
+  				}
+  				else if ((password.value==cpassword.value)&&(pwl>=8))
+  				{
+  					document.getElementById("tick1").innerHTML="<img src=\"green-tick-png-green-tick-png-picture-528.png\" width=\"15px\" height=\"15px\">";
+  					document.getElementById("tick2").innerHTML="<img src=\"green-tick-png-green-tick-png-picture-528.png\" width=\"15px\" height=\"15px\">";
+  				}
+  				else
+  				{
+  					document.getElementById("tick2").innerHTML="";
+  				}
+			 		});
+ 				 });
+		</script>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$("#bday").blur(function(){
+				var s2=document.getElementById('bday').value;
+ 				var s=new Date(s2);
+ 				var r=new Date();
+ 				var q=r.getFullYear()
+ 
+ 				var p=s.getFullYear();
+ 				 p=q-p;
+ 				if(p<18)
+ 				{
+ 				  document.getElementById("bday1").innerHTML="<input type=\"checkbox\" required>"+"You need a parent's permission to join.Tick here";
+				 }
+ 				else {
+    				 document.getElementById("bday1").innerHTML="";
+				 }
+						});
+				});
+ 				 
+		</script>
+		<script type="text/javascript">
+			
+      		$("#text").keyup(function() {
+      			var maxLength = 140;
+      			var length = $(this).val().length;
+      			var length = maxLength-length;
+      			$("#count").text(length)
+      			
+      		});
+      		
+    		</script>
+		
+	</body>
+</html>	
