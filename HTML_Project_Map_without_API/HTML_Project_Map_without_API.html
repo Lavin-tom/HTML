@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+		<head>
+		<title>map without API</title>
+	<style type="text/css">
+		button
+		{
+			background-color:black;
+ 			color:white;
+ 			width: 20em;
+ 			padding: 8px 20px 8px 20px;
+ 			margin-top: 10px;
+ 			text-transform: uppercase;
+				}
+	</style>
+		</head>
+	<body>
+		<center><button onclick="getLocation()">click for know location</button><center>
+	<center>
+		<br><br><div id="demo"></div>
+	</center>
+	<script>
+		// $(document).ready(getLocation(){
+		var x = document.getElementById("demo");
+		function getLocation() {
+		if (navigator.geolocation) 
+		{
+		navigator.geolocation.getCurrentPosition(showPosition);
+		} 
+		else 
+		{
+		x.innerHTML = "Geolocation is not supported by this browser.";
+		}
+		}
+		function showPosition(position) 
+		{
+		x.innerHTML = "Latitude: " + position.coords.latitude +
+		"<br>Longitude: " + position.coords.longitude;
+		}
+
+	</script>
+</body>
+</html>
